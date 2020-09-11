@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:tools="http://schemas.android.com/tools"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+    <data>
+        <variable
+            name="newsViewModel"
+            type="net.dev.weatherapp.viewmodels.NewsFragmentViewModel" />
+    </data>
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".fragments.NewsFragment">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <ScrollView
+                android:id="@+id/scrollView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <RelativeLayout
+                        android:id="@+id/rl_topNewsLayout"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content">
+
+                        <ImageView
+                            android:id="@+id/iv_newsBanner"
+                            imageUrl="@{newsViewModel.news.urlToImage}"
+                            android:layout_width="match_parent"
+                            android:layout_height="300dp"
+                            android:scaleType="centerCrop" />
+
+
+
+                    </RelativeLayout>
+
+                    <RelativeLayout
+                        android:id="@+id/rl_sourceBanner"
+                        android:layout_width="match_parent"
+                        android:layout_height="50dp"
+                        android:layout_below="@id/rl_topNewsLayout"
+                        android:background="@color/lightBackground"
+                        android:padding="@dimen/margin">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerVertical="true"
+                            android:text="@{newsViewModel.news.source.name}"
+                            android:textSize="@dimen/largeFontSize"
+
+                            />
+
+                        <ImageButton
+                            android:id="@+id/btn_bookmark"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentEnd="true"
+                            android:layout_alignParentRight="true"
+                            android:onClick="@{()-> newsViewModel.onBookmarkButtonClicked()}"
+                            />
+                    </RelativeLayout>
+
+                    <TextView
+                        android:id="@+id/tv_newsTitle"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/rl_sourceBanner"
+                        android:layout_margin="@dimen/margin"
+                        android:text="@{newsViewModel.news.title}"
+                        android:textSize="@dimen/largeFontSize" />
+
+                    <TextView
+                        android:id="@+id/tv_newsDescription"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/tv_newsTitle"
+                        android:layout_marginLeft="@dimen/margin"
+                        android:layout_marginRight="@dimen/margin"
+                        android:lineSpacingExtra="10sp"
+                        android:text="@{newsViewModel.news.description}"
+                        android:textSize="@dimen/mediumFontSize" />
+
+
+
+
+                </RelativeLayout>
+            </ScrollView>
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+
+                android:layout_alignParentBottom="true">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_alignParentBottom="true"
+
+                    android:drawableEnd="@drawable/ic_arrow_forward_black"
+                    android:onClick="@{()-> newsViewModel.changeNews()}"
+                    android:text="@{newsViewModel.nextTitle}"
+
+                    android:textAlignment="center"
+                    android:padding="10dp"
+                    android:background="@drawable/semitransparentbar"
+                    android:textSize="@dimen/mediumFontSize"
+                    android:maxLines="1"/>
+            </RelativeLayout>
+
+
+        </RelativeLayout>
+
+
+
+
+
+    </FrameLayout>
+</layout>

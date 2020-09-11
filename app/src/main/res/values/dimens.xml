@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="margin">10dp</dimen>
+    <dimen name="xl_margin"></dimen>
+
+
+    <!-- Font Dimensions   -->
+    <dimen name="veryLargeFontSize">36sp</dimen>
+    <dimen name="largeFontSize">20sp</dimen>
+    <dimen name="mediumFontSize">16sp</dimen>
+    <dimen name="smallFontSize">12sp</dimen>
+    <dimen name="verySmallFontSize">10sp</dimen>
+
+
+
+
+</resources>

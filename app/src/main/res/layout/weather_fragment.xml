@@ -1,0 +1,167 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+    <data>
+        <variable
+            name="vm"
+            type="net.dev.weatherapp.viewmodels.WeatherFragmentViewModel" />
+    </data>
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/weather_background"
+        tools:context=".fragments.WeatherFragment">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+
+            <TextView
+                android:id="@+id/tv_date"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="35dp"
+                android:background="@drawable/date_weather_background"
+                android:gravity="center"
+                android:text="Wed,27 May"
+                android:textColor="#fff"
+                android:textSize="16sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/tv_temperature"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="91dp"
+                android:text="@{vm.weatherOfTheDay.Temp.tempInCelcius}"
+                android:textSize="46sp"
+                app:layout_constraintEnd_toEndOf="@+id/tv_date"
+                app:layout_constraintStart_toStartOf="@+id/tv_date"
+                app:layout_constraintTop_toBottomOf="@+id/tv_date" />
+
+            <TextView
+                android:id="@+id/tv_description"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="7dp"
+                android:text="@{vm.weatherOfTheDay.weather.get(0).description}"
+                android:textSize="24sp"
+                app:layout_constraintEnd_toEndOf="@+id/tv_temperature"
+                app:layout_constraintStart_toStartOf="@+id/tv_temperature"
+                app:layout_constraintTop_toBottomOf="@+id/tv_temperature" />
+
+            <ImageView
+                android:id="@+id/iv_humidity"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="81dp"
+                android:layout_marginLeft="81dp"
+                android:layout_marginEnd="40dp"
+                android:layout_marginRight="40dp"
+                android:src="@drawable/ic_humidity"
+                app:layout_constraintBottom_toBottomOf="@+id/iv_windspeed"
+                app:layout_constraintEnd_toStartOf="@+id/iv_windspeed"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/iv_windspeed" />
+
+            <ImageView
+                android:id="@+id/iv_windspeed"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="80dp"
+                android:src="@drawable/ic_windspeed"
+                app:layout_constraintEnd_toEndOf="@+id/tv_description"
+                app:layout_constraintStart_toStartOf="@+id/tv_description"
+                app:layout_constraintTop_toBottomOf="@+id/tv_description" />
+
+            <ImageView
+                android:id="@+id/iv_location"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="40dp"
+                android:layout_marginLeft="40dp"
+                android:layout_marginEnd="80dp"
+                android:layout_marginRight="80dp"
+                android:src="@drawable/ic_location"
+                app:layout_constraintBottom_toBottomOf="@+id/iv_windspeed"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/iv_windspeed"
+                app:layout_constraintTop_toTopOf="@+id/iv_windspeed" />
+
+            <TextView
+                android:id="@+id/tv_location"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="11dp"
+                android:text="Bangalore"
+                android:textSize="18sp"
+                app:layout_constraintEnd_toEndOf="@+id/iv_location"
+                app:layout_constraintStart_toStartOf="@+id/iv_location"
+                app:layout_constraintTop_toBottomOf="@+id/iv_location" />
+
+            <TextView
+                android:id="@+id/tv_humidity"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="11dp"
+                android:text="@{vm.weatherOfTheDay.humidityInString}"
+                android:textSize="18sp"
+                app:layout_constraintEnd_toEndOf="@+id/iv_humidity"
+                app:layout_constraintStart_toStartOf="@+id/iv_humidity"
+                app:layout_constraintTop_toBottomOf="@+id/iv_humidity" />
+
+            <TextView
+                android:id="@+id/tv_windspeed"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="11dp"
+                android:text="@{vm.weatherOfTheDay.windSpeedInString}"
+                android:textSize="18sp"
+                app:layout_constraintEnd_toEndOf="@+id/iv_windspeed"
+                app:layout_constraintStart_toStartOf="@+id/iv_windspeed"
+                app:layout_constraintTop_toBottomOf="@+id/iv_windspeed" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:text="Humidity"
+                android:textSize="12sp"
+                app:layout_constraintEnd_toEndOf="@+id/iv_humidity"
+                app:layout_constraintStart_toStartOf="@+id/iv_humidity"
+                app:layout_constraintTop_toBottomOf="@+id/tv_humidity" />
+
+            <TextView
+                android:id="@+id/textView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:text="Wind Speed"
+                android:textSize="12sp"
+                app:layout_constraintEnd_toEndOf="@+id/iv_windspeed"
+                app:layout_constraintStart_toStartOf="@+id/iv_windspeed"
+                app:layout_constraintTop_toBottomOf="@+id/tv_windspeed" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:gravity="center"
+                android:text="Location"
+                android:textSize="12sp"
+                app:layout_constraintEnd_toEndOf="@+id/iv_location"
+                app:layout_constraintStart_toStartOf="@+id/iv_location"
+                app:layout_constraintTop_toBottomOf="@+id/tv_location" />
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </FrameLayout>
+</layout>

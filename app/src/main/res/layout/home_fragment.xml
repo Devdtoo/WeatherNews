@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+        <variable
+            name="vm"
+            type="net.dev.weatherapp.viewmodels.HomeFragmentViewModel" />
+
+        <variable
+            name="dateTimeUtils"
+            type="net.dev.weatherapp.utils.DateTimeUtils" />
+    </data>
+
+    <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+        android:id="@+id/refreshLayoutHomeFragment"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_margin="@dimen/margin"
+        >
+
+
+    <FrameLayout xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".fragments.HomeFragment">
+
+
+        <com.facebook.shimmer.ShimmerFrameLayout
+            android:id="@+id/shimmer_view_container"
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent">
+            <androidx.core.widget.NestedScrollView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:scrollbars="none">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <TextView
+                        android:id="@+id/tv_selectCardDay"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Today"
+                        android:textSize="@dimen/largeFontSize" />
+
+                    <TextView
+                        android:id="@+id/tv_current_date"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/tv_selectCardDay"
+                        android:text="@{dateTimeUtils.getCurrentDate()}" />
+
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/rv_weatherCards"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/tv_current_date"
+                        android:layout_marginTop="21dp"
+                        android:layout_marginBottom="27dp"
+                        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
+
+                    <TextView
+                        android:id="@+id/tv_recentUpdateLabel"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/rv_weatherCards"
+                        android:text="@string/recentUpdateLabel"
+                        android:textSize="@dimen/smallFontSize" />
+
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/rv_newsCards"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_below="@+id/tv_recentUpdateLabel"
+                        android:layout_marginTop="11dp"
+                        android:layout_marginBottom="27dp"
+                        android:orientation="vertical"
+                        tools:itemCount="9" />
+
+
+                </RelativeLayout>
+
+            </androidx.core.widget.NestedScrollView>
+
+        </com.facebook.shimmer.ShimmerFrameLayout>
+
+    </FrameLayout>
+    </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
+
+
+</layout>
+
+
+
+
+
+
